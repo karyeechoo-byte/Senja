@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Senja — Shop Link Page</title>
+<style>
+  :root {
+    --bg: #FFF7EE;
+    --card: #FFFFFF;
+    --accent: #E8734A;
+    --accent-soft: #FDE8DF;
+    --green: #3E8E6E;
+    --green-soft: #E4F2EB;
+    --text: #4A3728;
+    --muted: #8A7A6B;
+    --border: #F0E2D4;
+    --radius: 16px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 24px 16px 40px;
+    line-height: 1.5;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .emoji { font-size: 44px; }
+  h1 { font-size: 24px; margin-top: 6px; color: var(--accent); }
+  .tagline { color: var(--muted); font-size: 14px; margin-top: 4px; }
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 12px; padding: 6px 14px;
+    border-radius: 999px; font-size: 13px; font-weight: 600;
+    background: var(--green-soft); color: var(--green);
+  }
+  .status-pill.closed { background: var(--accent-soft); color: var(--accent); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 18px;
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 6px;
+  }
+  .section-sub { color: var(--muted); font-size: 13px; margin-bottom: 14px; }
+
+  .menu-item {
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all .15s ease;
+  }
+  .menu-item:last-child { margin-bottom: 0; }
+  .menu-item.active {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    box-shadow: 0 2px 8px rgba(232,115,74,.18);
+  }
+  .menu-item h3 { font-size: 15px; margin-bottom: 2px; }
+  .menu-item p { font-size: 13px; color: var(--muted); }
+  .menu-item .price { font-weight: 700; color: var(--accent); font-size: 14px; }
+  .menu-item.active h3::after { content: " ★"; color: var(--accent); }
+
+  .hours-today {
+    background: var(--green-soft);
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin-bottom: 14px;
+    font-size: 14px;
+  }
+  .hours-today strong { color: var(--green); }
+  table.hours { width: 100%; border-collapse: collapse; font-size: 14px; }
+  table.hours td { padding: 7px 0; border-bottom: 1px solid var(--border); }
+  table.hours tr:last-child td { border-bottom: none; }
+  table.hours td:last-child { text-align: right; color: var(--muted); }
+  table.hours tr.today td { font-weight: 700; color: var(--accent); }
+  table.hours tr.today td:last-child { color: var(--accent); }
+
+  .action-btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; padding: 14px; border-radius: 12px;
+    font-size: 15px; font-weight: 700; text-decoration: none;
+    margin-bottom: 12px; transition: transform .1s ease;
+  }
+  .action-btn:active { transform: scale(.98); }
+  .wa-btn { background: #25D366; color: #fff; }
+  .map-btn { background: var(--accent-soft); color: var(--accent); border: 2px solid var(--accent); }
+  .contact-note { font-size: 12px; color: var(--muted); text-align: center; }
+  footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="emoji">🍲</div>
+  <h1>Senja</h1>
+  <p class="tagline">Home-style Malaysian favourites in Bangsar, KL</p>
+  <div class="status-pill" id="statusPill"><span class="dot"></span><span id="statusText">Open</span></div>
+</header>
+
+<section id="menu">
+  <h2>🍽️ Menu</h2>
+  <p class="section-sub">Tap an item to highlight it</p>
+  <div class="menu-item" tabindex="0" role="button" aria-pressed="false">
+    <h3>Nasi Lemak Ayam Rendang</h3>
+    <p>Coconut rice, slow-cooked chicken rendang, sambal, peanuts &amp; boiled egg.</p>
+    <span class="price">RM 12.90 (sample)</span>
+  </div>
+  <div class="menu-item" tabindex="0" role="button" aria-pressed="false">
+    <h3>Mee Goreng Mamak</h3>
+    <p>Wok-fried noodles with egg, tofu, potato and a sweet-spicy mamak sauce.</p>
+    <span class="price">RM 8.50 (sample)</span>
+  </div>
+  <div class="menu-item" tabindex="0" role="button" aria-pressed="false">
+    <h3>Teh Tarik + Kuih Lapis</h3>
+    <p>Frothy pulled milk tea served with layered steamed pandan cake.</p>
+    <span class="price">RM 6.00 (sample)</span>
+  </div>
+</section>
+
+<section id="hours">
+  <h2>🕒 Opening Hours</h2>
+  <p class="section-sub">Today's hours &amp; the weekly list</p>
+  <div class="hours-today" id="todayBox"></div>
+  <table class="hours" id="hoursTable"></table>
+</section>
+
+<section id="contact">
+  <h2>📍 Contact &amp; Location</h2>
+  <p class="section-sub">Reach us or find us on the map</p>
+  <a class="action-btn wa-btn" id="waBtn" href="https://wa.me/60123456789?text=Hi%20Senja!%20%F0%9F%91%8B%20I%27d%20like%20to%20ask%20about%20the%20menu%20and%20place%20an%20order." target="_blank" rel="noopener">
+    💬 Chat on WhatsApp
+  </a>
+  <a class="action-btn map-btn" id="mapBtn" href="https://www.google.com/maps/search/?api=1&query=Jalan+Telawi+2%2C+Bangsar%2C+59100+Kuala+Lumpur" target="_blank" rel="noopener">
+    🗺️ Open in Maps
+  </a>
+  <p class="contact-note">123 Jalan Telawi 2, Bangsar, 59100 Kuala Lumpur · Sample phone number for demo</p>
+</section>
+
+<footer>Sample shop page for preview — no data is saved.</footer>
+
+<script>
+  // Opening hours: 0 = Sunday ... 6 = Saturday
+  var weeklyHours = [
+    { day: "Sunday",    hours: "10:00 AM – 8:00 PM" },
+    { day: "Monday",    hours: "Closed" },
+    { day: "Tuesday",   hours: "10:00 AM – 8:00 PM" },
+    { day: "Wednesday", hours: "10:00 AM – 8:00 PM" },
+    { day: "Thursday",  hours: "10:00 AM – 8:00 PM" },
+    { day: "Friday",    hours: "10:00 AM – 9:00 PM" },
+    { day: "Saturday",  hours: "10:00 AM – 9:00 PM" }
+  ];
+
+  var today = new Date().getDay();
+
+  // Weekly hours table with today's row highlighted
+  var table = document.getElementById("hoursTable");
+  weeklyHours.forEach(function (row, i) {
+    var tr = document.createElement("tr");
+    if (i === today) tr.className = "today";
+    tr.innerHTML = "<td>" + row.day + "</td><td>" + row.hours + "</td>";
+    table.appendChild(tr);
+  });
+
+  // Today's hours box + open/closed status pill
+  var todayRow = weeklyHours[today];
+  document.getElementById("todayBox").innerHTML =
+    "<strong>Today (" + todayRow.day + "):</strong> " + todayRow.hours;
+
+  var pill = document.getElementById("statusPill");
+  var statusText = document.getElementById("statusText");
+  var open = todayRow.hours !== "Closed";
+  // Simple time check during stated opening hours
+  if (open) {
+    var h = new Date().getHours();
+    if (h < 10 || h >= 21) open = false;
+  }
+  if (open) {
+    statusText.textContent = "Open now";
+  } else {
+    pill.classList.add("closed");
+    statusText.textContent = "Closed now";
+  }
+
+  // Feature: tap a menu item to highlight it (keep list visible)
+  var items = document.querySelectorAll(".menu-item");
+  items.forEach(function (item) {
+    function select() {
+      var already = item.classList.contains("active");
+      items.forEach(function (it) {
+        it.classList.remove("active");
+        it.setAttribute("aria-pressed", "false");
+      });
+      if (!already) {
+        item.classList.add("active");
+        item.setAttribute("aria-pressed", "true");
+      }
+    }
+    item.addEventListener("click", select);
+    item.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(); }
+    });
+  });
+</script>
+</body>
+</html>
